@@ -13,7 +13,7 @@ Go to your console and execute `./bin/typo3 jblocks:t3guzzlelog`
 Add a Xdebug breakpoint in the "ClientLogger" class.
 
 
-#Examples
+# Examples
 
 ## Add custom middleware to default Guzzle handler stack
 ```
