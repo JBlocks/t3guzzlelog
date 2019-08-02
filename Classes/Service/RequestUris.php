@@ -2,6 +2,7 @@
 
 namespace JBLOCKS\T3Guzzlelog\Service;
 
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Http\RequestFactory;
 
 class RequestUris
@@ -19,6 +20,7 @@ class RequestUris
     public function process(): void
     {
         $url = 'https://typo3.org/';
+        /** @noinspection UnusedFunctionResultInspection */
         $this->client->request($url, 'GET');
     }
 }

@@ -27,13 +27,12 @@ class GuzzlelogCommand extends Command
      * @param InputInterface $input
      * @param OutputInterface $output
      * @return int|null null or 0 if everything went fine, or an error code
-     * @throws \TYPO3\CMS\Core\Error\Http\ServiceUnavailableException
      * @throws \Exception
      */
     protected function execute(InputInterface $input, OutputInterface $output): ?int
     {
-        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-        $requestUris = $objectManager->get(RequestUris::class);
+        $requestUris = GeneralUtility::makeInstance(ObjectManager::class)
+            ->get(RequestUris::class);
 
         $requestUris->process();
 
