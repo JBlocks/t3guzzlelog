@@ -11,3 +11,38 @@ Activate the extension via the ExtensionManager in T3 Backend.
 # Usage (CLI)
 Go to your console and execute `./bin/typo3 jblocks:t3guzzlelog`
 Add a Xdebug breakpoint in the "ClientLogger" class.
+
+
+#Examples
+
+## Add custom middleware to default Guzzle handler stack
+```
+$GLOBALS['TYPO3_CONF_VARS']['HTTP']['handler'][] =
+        (\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\ACME\Middleware\Guzzle\ACustomMiddleware::class))->handler();
+$GLOBALS['TYPO3_CONF_VARS']['HTTP']['handler'][] =
+        (\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\ACME\Middleware\Guzzle\ASecondCustomMiddleware::class))->handler();
+```
+
+## Overwrite the whole Guzzle middleware handler stack with custom class
+```
+# AdditionalConfiguration
+GLOBALS['TYPO3_CONF_VARS']['HTTP']['handler'] = (\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\ACME\Middleware\Guzzle\HandlerStack::class))->handler();
+
+# Class to overwrite the default Guzzle handlerstack
+<?php
+declare(strict_types=1);
+
+namespace \ACME\Middleware\Guzzle;
+
+class HandlerStack
+{
+    public function handler(): HandlerStack
+    {
+        $stack = \GuzzleHttp\HandlerStack::create()();
+        $customHandler = (new MyCustomHandler())->foo();
+        $stack->push($customHandler);
+
+        return $stack;
+    }
+}
+```
