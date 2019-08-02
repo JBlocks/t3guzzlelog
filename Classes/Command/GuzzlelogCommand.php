@@ -2,7 +2,7 @@
 
 namespace JBLOCKS\T3Guzzlelog\Command;
 
-use ACME\Guzzlelog\Service\RequestUris;
+use JBLOCKS\T3Guzzlelog\Service\RequestUris;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

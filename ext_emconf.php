@@ -20,4 +20,9 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => '',
     'author_company' => '',
     'version' => '1.0.0',
+    'autoload' => [
+        'psr-4' => [
+            "JBLOCKS\\T3Guzzlelog\\" => "Classes/"
+        ],
+    ],
 ];
