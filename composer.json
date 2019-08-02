@@ -3,10 +3,14 @@
 	"type": "typo3-cms-extension",
 	"description": "Guzzle middleware handler",
 	"license": "MIT",
-	"version": "1.0.0",
 	"autoload": {
 		"psr-4": {
 			"JBLOCKS\\T3Guzzlelog\\": "Classes/"
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.0.x-dev"
 		}
 	}
 }
