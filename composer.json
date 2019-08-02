@@ -1,0 +1,16 @@
+{
+	"name": "jblocks/t3guzzlelog",
+	"type": "typo3-cms-extension",
+	"description": "Guzzle middleware handler",
+	"license": "GLP-2.0+",
+	"version": "1.0.0",
+	"require": {
+		"php": "~7.2"
+	},
+	"autoload": {
+		"psr-4": {
+			"JBLOCKS\\T3Guzzlelog\\": "Classes/",
+			"JBLOCKS\\T3Guzzlelog\\Tests\\": "Tests/"
+		}
+	}
+}
