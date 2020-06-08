@@ -1,6 +1,8 @@
 <?php declare(strict_types=1);
 
 namespace JBLOCKS\T3Guzzlelog\Middleware\Guzzle;
+use GuzzleHttp\Handler\CurlHandler;
+use GuzzleHttp\HandlerStack;
 use Psr\Http\Message\RequestInterface;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
