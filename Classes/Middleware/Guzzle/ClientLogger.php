@@ -22,8 +22,7 @@ class ClientLogger implements LoggerAwareInterface
         $stack = HandlerStack::create($handler);
 
         return function (RequestInterface $request, array $options) use ($stack) {
-            $logger = GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__);
-            $logger->error(
+            $this->logger->error(
                 'Requesting: ' . $request->getUri(),
                 $options
             );
