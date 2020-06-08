@@ -7,6 +7,8 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use TYPO3\CMS\Core\Log\LogLevel;
+use TYPO3\CMS\Core\Log\LogManager;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class ClientLogger implements LoggerAwareInterface
 {
@@ -20,9 +22,10 @@ class ClientLogger implements LoggerAwareInterface
         $stack = HandlerStack::create($handler);
 
         return function (RequestInterface $request, array $options) use ($stack) {
-            $this->logger->log(
-                LogLevel::ERROR,
-                'Requesting: ' . $request->getUri() . ' Options: ' . var_export($options, true)
+            $logger = GeneralUtility::makeInstance(LogManager::class)->getLogger(__CLASS__);
+            $logger->error(
+                'Requesting: ' . $request->getUri(),
+                $options
             );
             return $stack($request, $options);
         };
