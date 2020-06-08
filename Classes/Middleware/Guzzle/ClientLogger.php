@@ -14,12 +14,15 @@ class ClientLogger implements LoggerAwareInterface
      */
     public function handler(): callable
     {
-        return function (RequestInterface $request, array $options) use ($handler) {
+        $handler = new CurlHandler();
+        $stack = HandlerStack::create($handler);
+
+        return function (RequestInterface $request, array $options) use ($stack) {
             $this->logger->log(
                 LogLevel::ERROR,
                 'hello world from: ' . __METHOD__
             );
-            return $handler($request, $options);
+            return $stack($request, $options);
         };
     }
 }
