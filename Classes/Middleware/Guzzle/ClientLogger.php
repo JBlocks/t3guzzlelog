@@ -22,7 +22,7 @@ class ClientLogger implements LoggerAwareInterface
         return function (RequestInterface $request, array $options) use ($stack) {
             $this->logger->log(
                 LogLevel::ERROR,
-                'Requesting: ' . $request->getUri() . ' Options: ' . var_export($options)
+                'Requesting: ' . $request->getUri() . ' Options: ' . var_export($options, true)
             );
             return $stack($request, $options);
         };
